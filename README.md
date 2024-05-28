@@ -25,7 +25,7 @@ python -m venv myenv
 
 ```bash
 myenv\Scripts\activate
-````
+```` 
 
 ### Étape 3 : Installer les dépendances
 
@@ -37,36 +37,36 @@ pip install qdrant-client
 
 ```bash
 docker pull qdrant/qdrant
-```` 
+````
+
 ```bash
 docker run -p 6333:6333 -p 6334:6334 -v $(pwd)/qdrant_storage:/qdrant/storage:z qdrant/qdrant
-````
+```` 
+ 
 
 ## Utilisation
 
-### Initialiser le client Qdrant
+### Exécuter le script d'exemple
+
+```bash
+python qdrant_example.py
+```` 
+
+## Contenu du fichier qdrant_example.py
 
 ```python
 from qdrant_client import QdrantClient
+from qdrant_client.models import Distance, VectorParams
+from qdrant_client.models import PointStruct
+from qdrant_client.models import Filter, FieldCondition, MatchValue
 
 client = QdrantClient(url="http://localhost:6333")
-```` 
-
-### Créer une collection
-
-```python
-from qdrant_client.models import Distance, VectorParams
 
 client.create_collection(
     collection_name="test_collection",
     vectors_config=VectorParams(size=4, distance=Distance.DOT),
 )
-```` 
 
-### Ajouter des vecteurs
-
-```python
-from qdrant_client.models import PointStruct
 
 operation_info = client.upsert(
     collection_name="test_collection",
@@ -82,11 +82,9 @@ operation_info = client.upsert(
 )
 
 print(operation_info)
-```` 
 
-### Exécuter une requête
 
-```python
+
 search_result = client.search(
     collection_name="test_collection", 
     query_vector=[0.2, 0.1, 0.9, 0.7], 
@@ -94,12 +92,7 @@ search_result = client.search(
 )
 
 print(search_result)
-```` 
 
-### Ajouter un filtre
-
-```python
-from qdrant_client.models import Filter, FieldCondition, MatchValue
 
 search_result = client.search(
     collection_name="test_collection",
