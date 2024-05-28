@@ -13,19 +13,25 @@ Ce projet est un exemple simple et ludique démontrant comment utiliser Qdrant, 
 
 1. Clonez ce dépôt :
    ```bash
-   git clone https://github.com/votre-utilisateur/qdrant-vector-store-project.git
-   cd qdrant-vector-store-project
-   ```` 
+   git clone https://github.com/k-brunel/Qdrant
+   cd Qdrant
+   ```
 
 2. Démarrez le conteneur Qdrant :
    ```bash
    docker run -p 6333:6333 qdrant/qdrant
-   ```` 
+   ```
 
-3. Installez les dépendances Python :
+3. Créez et activez un environnement virtuel Python :
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Sur Windows, utilisez `venv\Scripts\activate`
+   ```
+
+4. Installez les dépendances Python :
    ```bash
    pip install -r requirements.txt
-   ```` 
+   ```
 
 ## Utilisation
 
@@ -34,21 +40,21 @@ Ce projet est un exemple simple et ludique démontrant comment utiliser Qdrant, 
 Exécutez le script `create_and_store_embeddings.py` pour générer des embeddings et les enregistrer dans Qdrant :
 ```bash
 python create_and_store_embeddings.py
-```` 
+```
 
 ### 2. Effectuer une Recherche Sémantique
 
 Utilisez le script `search_embeddings.py` pour effectuer une recherche sémantique basée sur un texte :
 ```bash
 python search_embeddings.py
-```` 
+```
 
 ### 3. Ajouter des Métadonnées et Filtrer les Recherches
 
 Pour effectuer une recherche avec filtrage basé sur des métadonnées, exécutez :
 ```bash
 python search_with_filter.py
-```` 
+```
 
 ## Structure du Projet
 
@@ -111,7 +117,7 @@ documents = [
 
 # Ajouter les documents à la collection
 add_documents(collection_name, documents)
-```` 
+```
 
 ### search_embeddings.py
 
@@ -128,7 +134,7 @@ def search(collection_name, query, top_k=3):
 query = "Le chat est heureux"
 results = search(collection_name, query)
 print(results)
-```` 
+```
 
 ### search_with_filter.py
 
@@ -155,7 +161,7 @@ def search_with_filter(collection_name, query, filter_category, top_k=3):
 filter_category = "animal"
 results_with_filter = search_with_filter(collection_name, "Le chat dort", filter_category)
 print(results_with_filter)
-```` 
+```
 
 ## Contribuer
 
