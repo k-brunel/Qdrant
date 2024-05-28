@@ -21,8 +21,11 @@ cd Qdrant
 
 ```bash
 python -m venv myenv
-source myenv/bin/activate   # Sur Windows utilisez `myenv\Scripts\activate`
 ```` 
+
+```bash
+myenv\Scripts\activate
+````
 
 ### Étape 3 : Installer les dépendances
 
@@ -34,8 +37,10 @@ pip install qdrant-client
 
 ```bash
 docker pull qdrant/qdrant
-docker run -p 6333:6333 -p 6334:6334 -v $(pwd)/qdrant_storage:/qdrant/storage:z qdrant/qdrant
 ```` 
+```bash
+docker run -p 6333:6333 -p 6334:6334 -v $(pwd)/qdrant_storage:/qdrant/storage:z qdrant/qdrant
+````
 
 ## Utilisation
 
